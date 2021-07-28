@@ -1,0 +1,52 @@
+﻿
+.btn-block {
+    width: 100% !important;
+}
+
+
+.bcCource {
+    background-color: #218e9e;
+}
+
+.marBot {
+    margin-top: 15px;
+}
+
+.h1, h1 {
+    font-size: 3.5rem !important;
+}
+
+#linkinp {
+    height: 60px;
+    border-radius: 27px 0 0 27px;
+    border-color: red;
+}
+
+#btnlnkmb {
+    border-radius: 0 27px 27px 0;
+    height: 60px;
+}
+
+#linkinp:hover {
+    border-color: cornflowerblue
+}
+
+#mt-0 {
+    margin-top: 120px;
+}
+
+#cp-0 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.m-50 {
+    margin-top: 50px;
+}
+#th-0 {
+    padding-bottom: 1px;
+    background-color: #42a5f5;
+    margin-right: -12px;
+}
+

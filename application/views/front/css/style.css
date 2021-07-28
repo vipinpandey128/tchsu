@@ -1,0 +1,195 @@
+@font-face {
+    font-family: 'mnIcons';
+    src: url('../fonts/mnIcons.eot');
+    src: url('../fonts/mnIcons.eot?rmvnss#iefix') format('embedded-opentype'),
+        url('../fonts/mnIcons.ttf') format('truetype'),
+        url('../fonts/mnIcons.woff') format('woff'),
+        url('../fonts/mnIcons.svg?rmvnss#mnIcons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="mn-"], [class*=" mn-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'mnIcons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mn-arrow-left:before {
+  content: "\e9d7";
+}
+.mn-arrow-next:before {
+  content: "\e9d8";
+}
+.mn-arrow-right:before {
+  content: "\e9d9";
+}
+.mn-facebook:before {
+  content: "\e9da";
+}
+.mn-instagram:before {
+  content: "\e9db";
+}
+.mn-linkedin:before {
+  content: "\e9dc";
+}
+.mn-youtube:before {
+  content: "\e9ce";
+}
+.mn-check-bold:before {
+  content: "\e9cc";
+}
+.mn-settings:before {
+  content: "\e9b8";
+}
+.mn-settings-work-tool:before {
+  content: "\e9b9";
+}
+.mn-test:before {
+  content: "\e9ba";
+}
+.mn-twitter:before {
+  content: "\e9a2";
+}
+.mn-whatsapp:before {
+  content: "\e9a3";
+}
+.mn-up-arrow-long:before {
+  content: "\e9a0";
+}
+.mn-down-arrow-long:before {
+  content: "\e9a1";
+}
+.mn-long-down-arrow:before {
+  content: "\e97b";
+}
+.mn-right-arrow-thin:before {
+  content: "\e964";
+}
+.mn-rupee:before {
+  content: "\e965";
+}
+.mn-email:before {
+  content: "\e962";
+}
+.mn-call:before {
+  content: "\e963";
+}
+.mn-plus:before {
+  content: "\e93f";
+}
+.mn-photo-camera:before {
+  content: "\e924";
+}
+.mn-microphone:before {
+  content: "\e925";
+}
+.mn-video:before {
+  content: "\e921";
+}
+.mn-angle-down-arrow:before {
+  content: "\e902";
+}
+.mn-angle-up-arrow:before {
+  content: "\e930";
+}
+.mn-pmt:before {
+  content: "\e90d";
+}
+.mn-search:before {
+  content: "\e92f";
+}
+.mn-left-arrow-long:before {
+  content: "\e931";
+}
+.mn-butterfly:before {
+  content: "\e932";
+}
+.mn-tick-sign:before {
+  content: "\e933";
+}
+.mn-check:before {
+  content: "\e934";
+}
+.mn-checkmark-icon:before {
+  content: "\e935";
+}
+.mn-remove:before {
+  content: "\e936";
+}
+.mn-wrong:before {
+  content: "\e937";
+}
+.mn-facebook-logo:before {
+  content: "\e938";
+}
+.mn-pencil-edit-button:before {
+  content: "\e939";
+}
+.mn-notifications-button:before {
+  content: "\e93a";
+}
+.mn-left-chevron:before {
+  content: "\e93b";
+}
+.mn-right-arrow:before {
+  content: "\e93c";
+}
+.mn-right-chevron:before {
+  content: "\e93d";
+}
+.mn-left-arrow:before {
+  content: "\e93e";
+}
+.mn-down-arrow:before {
+  content: "\e940";
+}
+.mn-filter:before {
+  content: "\e942";
+}
+.mn-profile:before {
+  content: "\e943";
+}
+.mn-social:before {
+  content: "\e945";
+}
+.mn-focussed:before {
+  content: "\e94f";
+}
+.mn-fun-learner:before {
+  content: "\e950";
+}
+.mn-studious:before {
+  content: "\e951";
+}
+.mn-well-connected:before {
+  content: "\e952";
+}
+.mn-bar-menu:before {
+  content: "\e953";
+}
+.mn-date-time-calendar:before {
+  content: "\e954";
+}
+.mn-thumb-down-fill:before {
+  content: "\e955";
+}
+.mn-thumb-down-line:before {
+  content: "\e956";
+}
+.mn-thumb-up-fill:before {
+  content: "\e957";
+}
+.mn-thumb-up-line:before {
+  content: "\e958";
+}
