@@ -8,6 +8,7 @@ class Cms_model extends CI_Model
     protected $table4 = 'tbl_subject_menu';
     protected $table5 = 'tbl_learning_report_submenuitem';
     protected $table6 = 'tbl_learning_report_submenu';
+	protected $table7 = 'tbl_sub_menu';
     
     ///geting sub menu for learning report
     
@@ -16,7 +17,25 @@ class Cms_model extends CI_Model
 		return $this->db->get($this->table6)->result();
 	}
     
-    
+    function get_subject_menu($postData=array())
+	{
+		$response = array();
+		if(isset($postData['sbid'])){
+ 
+			// Select record
+			// $this->db->where('SBMID', $postData['sbmid']);
+			// $records = $this->db->get($this->table7)->result();
+			// $response = $records->result_array();
+			  // Select record
+			  $this->db->select('*');
+			  $this->db->where('SBID', $postData['sbid']);
+			  $records = $this->db->get('tbl_sub_menu');
+			  $response = $records->result_array();
+	   
+		  }
+		  return $response;
+	}
+
     public function get_all_courses()
 	{
 		return $this->db->get($this->table1)->result();

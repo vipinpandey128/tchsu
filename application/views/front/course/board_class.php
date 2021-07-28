@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <?php $cms_page = $this->cms_model->get_class_subject($_GET['BCID']);?>
-    <?php $cms_learning_reports = $this->cms_model->get_learning_report($_GET['BCID']);?>
-    <?php $cms_learning_reports_submenus = $this->cms_model->get_submenu_learningrp($_GET['BCID']);?>
+    <?php $cms_page = $this->cms_model->get_class_subject($_GET['BCID']); ?>
+    <?php $cms_learning_reports = $this->cms_model->get_learning_report($_GET['BCID']); ?>
+    <?php $cms_learning_reports_submenus = $this->cms_model->get_submenu_learningrp($_GET['BCID']); ?>
     <meta charset="utf-8" />
     <title></title>
     <link href="<?php echo base_url('assets/front/'); ?>Content/bootstrap.min.css" rel="stylesheet" />
@@ -13,15 +13,26 @@
     <?php $this->load->view('front/layout/head.php') ?>
     <style>
         .rounded {
-                    border-radius: .75rem!important;
-                }
+            border-radius: .75rem !important;
+        }
+
+        /* Turn off scrollbar when body element has the loading class */
+        body.loading {
+            overflow: hidden;
+        }
+
+        /* Make spinner image visible when body element has the loading class */
+        body.loading {
+            display: block;
+        }
     </style>
+
 
 </head>
 
 
 <body>
-
+    <div id="wait" style="position:absolute;top:50%;left:50%;padding:2px;"><img src="<?php echo base_url('uploads/loader/loader.gif') ?>" width="64" height="64" /><br>Loading..</div>
     <div class="container-fluid shadow-sm p-3 mb-5 bg-body rounded">
         <div class="row">
             <div class="col-sm-12">
@@ -38,28 +49,31 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="list-group shadow-sm p-3 mb-4 bg-body rounded"><a href="#" class="active list-group-item">Subjects</a></div>
-                <div class="list-group">
-                     <?php foreach($cms_page as $cms_pages){ ?>
-                     
-                     <a href="#" class="list-group-item list-group-item-action"><?php echo $cms_pages->Subject_Menu ?></a>
-                     
-                     <?php } ?>
-                    
-                    
+                <div class="list-group" id="submenuId">
+                    <?php $buttonActive = "";
+                    $i = 0;
+                    foreach ($cms_page as $cms_pages) {
+                        if ($i < 1)
+                            $buttonActive = "active";
+                        else
+                            $buttonActive = ""; ?>
+
+                        <button onclick='getSubjectMenu(<?php echo $cms_pages->SBID ?>)' class="list-group-item list-group-item-action <?php echo $buttonActive; ?>"><?php echo $cms_pages->Subject_Menu ?></button>
+
+                    <?php $i++;
+                    } ?>
+
+
                 </div>
 
             </div>
             <div class="col-sm-9">
                 <div class="row">
-                    <div class="col-sm-12 shadow-sm p-3 mb-4 bg-body rounded">
-                        <button type="button" class="active btn btn-outline-primary  border-radius">Videos</button>
-                        <button type="button" class="btn btn-outline-secondary border-radius">Practice Test</button>
-                        <button type="button" class="btn btn-outline-success border-radius">CBSE Book</button>
-                        <button type="button" class="btn btn-outline-danger border-radius">Olympiad</button>
+                    <div class="col-sm-12 shadow-sm p-3 mb-4 bg-body rounded" id="sub_menuId">
                     </div>
-                    <div class="col-sm-3 shadow-sm p-3 mb-4 bg-body rounded">
+                    <!-- <div class="col-sm-3 shadow-sm p-3 mb-4 bg-body rounded">
                         <img width="100%" height="100%" src="https://tchsu.in/uploads/course/maxresdefault.jpg">
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -83,24 +97,26 @@
             <div class="col-sm-9">
                 <div class="row">
                     <div class="col-sm-12  shadow-sm p-3 mb-5 bg-body rounded">
-                        <?php $active = "active "; foreach($cms_learning_reports_submenus as $cms_learning_reports_submenu){ ?>
+                        <?php $active = "active ";
+                        foreach ($cms_learning_reports_submenus as $cms_learning_reports_submenu) { ?>
                             <button type="button" class="<?php echo $active; ?>btn btn-outline-primary border-radius"><?php echo $cms_learning_reports_submenu->MenuName ?> (0.00%)</button>
-                        <?php $active = ""; } ?>
+                        <?php $active = "";
+                        } ?>
                     </div>
 
-                    <?php foreach($cms_learning_reports as $cms_learning_report){ ?>
-                    <div class="col-sm-6">
-                        <div class="shadow p-3 mb-5 bg-white rounded">
-                            <div class="row">
-                                <div class="col-sm-3 media-left">
-                                    <img src="<?php echo base_url('uploads/school_course/report_icon/'); ?><?php echo $cms_learning_report->IconName ?>" class="rounded float-left">
-                                </div>
-                                <div class="col-sm-9 text-left">
-                                    <p class=""><?php echo $cms_learning_report->ItemName ?><br><b>7/7</b></p>
+                    <?php foreach ($cms_learning_reports as $cms_learning_report) { ?>
+                        <div class="col-sm-6">
+                            <div class="shadow p-3 mb-5 bg-white rounded">
+                                <div class="row">
+                                    <div class="col-sm-3 media-left">
+                                        <img src="<?php echo base_url('uploads/school_course/report_icon/'); ?><?php echo $cms_learning_report->IconName ?>" class="rounded float-left">
+                                    </div>
+                                    <div class="col-sm-9 text-left">
+                                        <p class=""><?php echo $cms_learning_report->ItemName ?><br><b>7/7</b></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
 
@@ -109,6 +125,84 @@
         </div>
     </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Load Exteral script file (Remove the comment if you want send AJAX request from external script file ) -->
+    <!--<script src='<?php echo base_url(); ?>script/script.js' type='text/javascript' ></script>-->
+    <script type='text/javascript'>
+        // baseURL variable
+        var baseURL = "<?php echo base_url(); ?>";
+
+        function getSubjectMenu(sbid) {
+
+            $.ajax({
+                url: '<?= base_url() ?>index.php/Board_Class/subjectMenu',
+                method: 'post',
+                data: {
+                    sbid: sbid
+                },
+                dataType: 'json',
+                success: function(response) {
+                    var len = response.length;
+                    $("#sub_menuId").text('');
+                    if (len > 0) {
+                        let text = "";
+                        let buttonActive = "";
+                        for (let i = 0; i < len; i++) {
+                            if (i < 1)
+                                buttonActive = "active";
+                            else
+                                buttonActive = "";
+
+                            text += `<button type="button" onclick()="getItem(${response[i].SBMID})" class="btn btn-outline-primary border-radius ${buttonActive}">${response[i].Sub_Menu}</button> `;
+                        }
+
+                        document.getElementById('sub_menuId').innerHTML = text;
+                        registerMethod();
+
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        registerActive();
+        // Add active class to the current button (highlight it)
+        function registerMethod() {
+            var header = document.getElementById("sub_menuId");
+            var btns = header.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                    var header = document.getElementById("sub_menuId");
+                    var current = header.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        }
+
+        function registerActive() {
+            var header = document.getElementById("submenuId");
+            var btns = header.getElementsByClassName("list-group-item");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                    var header = document.getElementById("submenuId");
+                    var current = header.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        }
+
+        $(document).on({
+            ajaxStart: function() {
+                $("body").addClass("loading");
+            },
+            ajaxStop: function() {
+                $("body").removeClass("loading");
+            }
+        });
+    </script>
 
 </body>
 
