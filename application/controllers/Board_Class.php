@@ -24,5 +24,15 @@ class Board_Class extends CI_Controller{
 	
 		echo json_encode($data);
 	  }
+
+	  public function subjectItem(){
+		// Get data
+		$postData = $this->input->post();
+	
+		// get data
+		$data = $this->Cms_model->get_subject_item($postData);
+	
+		echo json_encode($data);
+	  }
     
 }

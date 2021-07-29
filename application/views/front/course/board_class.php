@@ -32,7 +32,7 @@
 
 
 <body>
-    <div id="wait" style="position:absolute;top:50%;left:50%;padding:2px;"><img src="<?php echo base_url('uploads/loader/loader.gif') ?>" width="64" height="64" /><br>Loading..</div>
+    <div id="wait" style="display:none;position:absolute;top:50%;left:50%;padding:2px;"><img src="<?php echo base_url('uploads/loader/loader.gif') ?>" width="64" height="64" /><br>Loading..</div>
     <div class="container-fluid shadow-sm p-3 mb-5 bg-body rounded">
         <div class="row">
             <div class="col-sm-12">
@@ -71,9 +71,7 @@
                 <div class="row">
                     <div class="col-sm-12 shadow-sm p-3 mb-4 bg-body rounded" id="sub_menuId">
                     </div>
-                    <!-- <div class="col-sm-3 shadow-sm p-3 mb-4 bg-body rounded">
-                        <img width="100%" height="100%" src="https://tchsu.in/uploads/course/maxresdefault.jpg">
-                    </div> -->
+                   <div id="booksid"></div>
                 </div>
 
             </div>
@@ -127,8 +125,6 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Load Exteral script file (Remove the comment if you want send AJAX request from external script file ) -->
-    <!--<script src='<?php echo base_url(); ?>script/script.js' type='text/javascript' ></script>-->
     <script type='text/javascript'>
         // baseURL variable
         var baseURL = "<?php echo base_url(); ?>";
@@ -154,10 +150,37 @@
                             else
                                 buttonActive = "";
 
-                            text += `<button type="button" onclick()="getItem(${response[i].SBMID})" class="btn btn-outline-primary border-radius ${buttonActive}">${response[i].Sub_Menu}</button> `;
+                            text += `<button type="button" onclick='getItem(${response[i].SBMID})' class="btn btn-outline-primary border-radius ${buttonActive}">${response[i].Sub_Menu}</button> `;
                         }
 
                         document.getElementById('sub_menuId').innerHTML = text;
+                        registerMethod();
+
+                    }
+                }
+            });
+        }
+
+        function getItem(sbmid) {
+            alert();
+            $.ajax({
+                url: '<?= base_url() ?>index.php/Board_Class/subjectItem',
+                method: 'post',
+                data: {
+                    sbid: sbid
+                },
+                dataType: 'json',
+                success: function(response) {
+                    var len = response.length;
+                    $("#booksid").text('');
+                    if (len > 0) {
+                        let text = "";
+
+                        for (let i = 0; i < len; i++) {
+                            text += `<div class="shadow p-3 mb-5 bg-white rounded">${response[i].ChapterName} <i class='fas fa-book-open'></i> ${response[i].ItemName}</div>`;
+                        }
+
+                        document.getElementById('booksid').innerHTML = text;
                         registerMethod();
 
                     }
@@ -196,10 +219,10 @@
 
         $(document).on({
             ajaxStart: function() {
-                $("body").addClass("loading");
+                $("#wait").addClass("loading");
             },
             ajaxStop: function() {
-                $("body").removeClass("loading");
+                $("#wait").removeClass("loading");
             }
         });
     </script>

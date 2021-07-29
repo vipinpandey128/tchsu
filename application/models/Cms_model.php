@@ -36,6 +36,25 @@ class Cms_model extends CI_Model
 		  return $response;
 	}
 
+	function get_subject_item($postData=array())
+	{
+		$response = array();
+		if(isset($postData['sbmid'])){
+ 
+			// Select record
+			// $this->db->where('SBMID', $postData['sbmid']);
+			// $records = $this->db->get($this->table7)->result();
+			// $response = $records->result_array();
+			  // Select record
+			  $this->db->select('*');
+			  $this->db->where('sbmid', $postData['sbmid']);
+			  $records = $this->db->get('tbl_subject_item');
+			  $response = $records->result_array();
+	   
+		  }
+		  return $response;
+	}
+
     public function get_all_courses()
 	{
 		return $this->db->get($this->table1)->result();
