@@ -85,22 +85,17 @@ class StateBoard extends CI_Controller
 				$fileExt = pathinfo($_FILES["iconname"]["name"], PATHINFO_EXTENSION);
 				$config['upload_path'] = 'uploads/school_course/';
 				$config['allowed_types'] = 'jpg|jpeg|png|gif';
-				$config['max_size'] = '1000';
-				$config['max_width'] = '100';
-				$config['max_height'] = '100';
 				$config['file_name'] = $uuid . "." . $fileExt;
-
 				//Load upload library and initialize configuration
 				$this->load->library('upload', $config);
 				$this->upload->initialize($config);
-
 				if ($this->upload->do_upload('iconname')) {
 					$this->upload->data();
 					$data['IconName'] = $uuid . "." . $fileExt;
 					$data['ClassName'] = $this->input->post('classname');
-					$data['SCID'] = $this->input->post('scid');
+					$data['SCID'] = $this->input->post('select_board');
 					$data['URL'] = $this->input->post('url');
-					$response = $this->State_model->saverecords($data);
+					$response = $this->State_model->saveclass($data);
 					if ($response == true) {
 						echo "Records Saved Successfully";
 					} else {
@@ -109,5 +104,17 @@ class StateBoard extends CI_Controller
 				}
 			}
 		}
+	}
+
+
+	public function getBoardClass()
+	{
+		// Get data
+		$postData = $this->input->post();
+	
+		// get data
+		$data = $this->State_model->get_Board_Classes($postData);
+	
+		echo json_encode($data);
 	}
 }
