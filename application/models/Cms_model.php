@@ -48,7 +48,7 @@ class Cms_model extends CI_Model
 			  // Select record
 			  $this->db->select('*');
 			  $this->db->where('sbmid', $postData['sbmid']);
-			  $records = $this->db->get('tbl_subject_item');
+			  $records = $this->db->get('tbl_class_subject_item');
 			  $response = $records->result_array();
 	   
 		  }

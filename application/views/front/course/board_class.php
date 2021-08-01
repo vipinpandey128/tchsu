@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="text text-center">CBSE Solutions for Class 5 All Subjects</h2>
-                <p class="text2 ">The CBSE Class 5 syllabus is vast and needs a thorough study of each and every concept. The subjects covered in CBSE Class 5 are Math, English and Hindi and EVS. Edubull.com believes in engaging students through its multimedia based approach
+                <p class="text2 ">The CBSE Class 5 syllabus is vast and needs a thorough study of each and every concept. The subjects covered in CBSE Class 5 are Math, English and Hindi and EVS. TchSu.in believes in engaging students through its multimedia based approach
                     to studies. Students can clarify and learn about various important concepts of CBSE class 5 and explore each concept thoroughly using our concept videos. Take a test at Edubull.com and students of CBSE Class 5 can know their preparation
                     level. We help in the self assessment of students to score good marks. One can take a test of Class 5 subjects like Math, Hindi, Social Science, English and EVS.</p>
                 <a href="#learnigreport" class="btn btn-primary ">Ranking : 1</a>
@@ -71,7 +71,9 @@
                 <div class="row">
                     <div class="col-sm-12 shadow-sm p-3 mb-4 bg-body rounded" id="sub_menuId">
                     </div>
+                   <div class="row">
                    <div id="booksid"></div>
+                   </div>
                 </div>
 
             </div>
@@ -79,7 +81,7 @@
         </div>
 
     </div>
-    <div class="container-fluid shadow-sm p-3 mb-5 bg-body rounded">
+    <!-- <div class="container-fluid shadow-sm p-3 mb-5 bg-body rounded">
 
         <h3 id="learnigreport" class="heading text-center">Your Learnig Report</h3>
         <p id="learnigreport" class="paragragh text-center"> Ranking: 1/249</p>
@@ -121,13 +123,13 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type='text/javascript'>
         // baseURL variable
-        var baseURL = "<?php echo base_url(); ?>";
+        var baseURL = "<?php echo base_url(); ?>";z
 
         function getSubjectMenu(sbid) {
 
@@ -149,7 +151,6 @@
                                 buttonActive = "active";
                             else
                                 buttonActive = "";
-
                             text += `<button type="button" onclick='getItem(${response[i].SBMID})' class="btn btn-outline-primary border-radius ${buttonActive}">${response[i].Sub_Menu}</button> `;
                         }
 
@@ -162,12 +163,11 @@
         }
 
         function getItem(sbmid) {
-            alert();
             $.ajax({
                 url: '<?= base_url() ?>index.php/Board_Class/subjectItem',
                 method: 'post',
                 data: {
-                    sbid: sbid
+                    sbmid: sbmid
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -177,7 +177,7 @@
                         let text = "";
 
                         for (let i = 0; i < len; i++) {
-                            text += `<div class="shadow p-3 mb-5 bg-white rounded">${response[i].ChapterName} <i class='fas fa-book-open'></i> ${response[i].ItemName}</div>`;
+                            text += `<div class="shadow p-3 mb-5 bg-white rounded col-sm-6 col-md-6">${response[i].ChapterName} <i class='fas fa-book-open'></i> ${response[i].ItemName}</div>`;
                         }
 
                         document.getElementById('booksid').innerHTML = text;

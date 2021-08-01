@@ -1,33 +1,37 @@
 <html class="scroll-effects">
+
 <head>
- <?php $this->load->view('front/layout/head.php') ?>
-       
+    <?php $this->load->view('front/layout/head.php') ?>
+
     <style>
-        .img_radius{
+        .img_radius {
             border-radius: 10px;
         }
-        .background1{
+
+        .background1 {
             background-color: #808080;
         }
-        .background2{
-            
+
+        .background2 {
+
             background-color: #076f5d;
         }
-        .background3{
-           background-color: #c19307; 
+
+        .background3 {
+            background-color: #c19307;
         }
-        
     </style>
-    
+
 </head>
+
 <body id="mnapp" class="">
-   
-   
-        <?php $cms_page = $this->cms_model->get_cms_by_id(1);?>
+
+
+    <?php $cms_page = $this->cms_model->get_cms_by_id(1); ?>
     <?php $first_level = $this->board_model->get_board_by_parent(0); ?>
-<?php $user_id = $this->session->userdata('USER_ID'); ?>
-<?php $link = $this->setting_model->get_all_setting();?>
-<?php $userdata = $this->user_model->get_user_by_id($user_id);?>
+    <?php $user_id = $this->session->userdata('USER_ID'); ?>
+    <?php $link = $this->setting_model->get_all_setting(); ?>
+    <?php $userdata = $this->user_model->get_user_by_id($user_id); ?>
     <!-- top header  -->
     <header class="main-header">
         <div class="wrapper">
@@ -54,7 +58,7 @@
                         <ul class="nav overlay-content">
 
                             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-           <a href="tel:<?php echo $link[0]->phone; ?>" class="phone"><img src="https://img-nm.mnimgs.com/img/site_content/meritnation/newHome/homepage/phone.png" alt=""> <?php echo $link[0]->phone; ?></a>
+                            <a href="tel:<?php echo $link[0]->phone; ?>" class="phone"><img src="https://img-nm.mnimgs.com/img/site_content/meritnation/newHome/homepage/phone.png" alt=""> <?php echo $link[0]->phone; ?></a>
                             <li class="nav-item hidden">
                                 <!-- <a href="javascript:void(0);" onclick ="demopageRedirection1();">Buy a course</a> -->
                                 <a href="<?php echo base_url() ?>about-us" class="explore">About Us</a>
@@ -64,147 +68,7 @@
                                 <ul class="sub-menu">
                                     <li class="has-sub">
                                         <a href="<?php echo base_url() ?>school">
-                                            School
-                                        </a>
-                                    </li>
-                                    <li class="has-sub">
-                                        <a href="/cbse" class="dropBtn2">
-                                            CBSE
-                                        </a>
-                                        <span class="plus-minus-toggle collapsed"></span>
-                                        <div class="board-menu">
-                                            <!-- class lists  -->
-                                            <span class="first-half">
-                                                <a href="/junior/grade-1">Class 1</a>
-                                                <a href="/junior/grade-2">Class 2</a>
-                                                <a href="/junior/grade-3">Class 3</a>
-                                                <a href="/junior/grade-4">Class 4</a>
-                                                <a href="/junior/grade-5">Class 5</a>
-                                                <a href="/cbse-class-6/8">Class 6</a>
-                                                <a href="/cbse-class-7/9">Class 7</a>
-                                                <a href="/cbse-class-8/10">Class 8</a>
-                                                <a href="/cbse-class-9/11">Class 9</a>
-                                                <a href="/cbse-class-10/12">Class 10</a>
-                                            </span>
-                                            <span class="second-half">
-                                                <a href="/cbse-class-11-science/41">Class 11-Science</a>
-                                                <a href="/cbse-class-11-commerce/161">Class 11-Commerce</a>
-                                                <a href="/cbse-class-11-humanities/69">Class 11-Humanities</a>
-                                                <a href="/cbse-class-12-science/46">Class 12-Science</a>
-                                                <a href="/cbse-class-12-commerce/59">Class 12-Commerce</a>
-                                                <a href="/cbse-class-12-humanities/71">Class 12-Humanities</a>
-                                                <!-- <a href="/testprep" class="half">JEE</a>
-                                                <a href="testprep" class="half">AIPMT</a>
-                                                <a href="/bba" class="half">BBA</a>
-                                                <a href="/cpt" class="half">CPT</a>
-                                                <a href="/nda" class="half">NDA</a> -->
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="has-sub">
-                                        <a href="/icse">
-                                            ICSE
-                                        </a>
-                                        <span class="plus-minus-toggle collapsed"></span>
-                                        <div class="board-menu">
-                                            <!-- class lists  -->
-                                            <span class="first-half">
-                                                <a href="/junior/grade-1">Class 1</a>
-                                                <a href="/junior/grade-2">Class 2</a>
-                                                <a href="/junior/grade-3">Class 3</a>
-                                                <a href="/junior/grade-4">Class 4</a>
-                                                <a href="/junior/grade-5">Class 5</a>
-                                                <a href="/icse-class-6/77">Class 6</a>
-                                                <a href="/icse-class-7/78">Class 7</a>
-                                                <a href="/icse-class-8/79">Class 8</a>
-                                                <a href="/icse-class-9/80">Class 9</a>
-                                                <a href="/icse-class-10/81">Class 10</a>
-                                            </span>
-                                            <span class="second-half">
-                                                <a href="/icse-class-11-science/82">Class 11-Science</a>
-                                                <a href="/icse-class-11-commerce/84">Class 11-Commerce</a>
-                                                <a href="/icse-class-12-science/83">Class 12-Science</a>
-                                                <a href="/icse-class-12-commerce/86">Class 12-Commerce</a>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="has-sub">
-                                        <a href="/tamilnadu" class="dropBtn2">
-                                            Tamil Nadu
-                                        </a>
-                                        <span class="plus-minus-toggle collapsed"></span>
-                                        <div class="board-menu">
-                                            <!-- class lists  -->
-                                            <span class="first-half">
-                                                <a href="/junior/grade-1">Class 1</a>
-                                                <a href="/junior/grade-2">Class 2</a>
-                                                <a href="/junior/grade-3">Class 3</a>
-                                                <a href="/junior/grade-4">Class 4</a>
-                                                <a href="/junior/grade-5">Class 5</a>
-                                                <a href="/tamilnadu-class-6/108">Class 6</a>
-                                                <a href="/tamilnadu-class-7/109">Class 7</a>
-                                                <a href="/tamilnadu-class-8/110">Class 8</a>
-                                                <a href="/tamilnadu-class-9/111">Class 9</a>
-                                                <a href="/tamilnadu-class-10/112">Class 10</a>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="has-sub">
-                                        <a href="/karnataka" class="dropBtn2">
-                                            Karnataka
-                                        </a>
-                                        <span class="plus-minus-toggle collapsed"></span>
-                                        <div class="board-menu">
-                                            <!-- class lists  -->
-                                            <span class="first-half">
-                                                <a href="/junior/grade-1">Class 1</a>
-                                                <a href="/junior/grade-2">Class 2</a>
-                                                <a href="/junior/grade-3">Class 3</a>
-                                                <a href="/junior/grade-4">Class 4</a>
-                                                <a href="/junior/grade-5">Class 5</a>
-                                                <a href="/karnataka-class-6/96">Class 6</a>
-                                                <a href="/karnataka-class-7/97">Class 7</a>
-                                                <a href="/karnataka-class-8/98">Class 8</a>
-                                                <a href="/karnataka-class-9/99">Class 9</a>
-                                                <a href="/karnataka-class-10/100">Class 10</a>
-                                            </span>
-                                            <span class="second-half">
-                                                <a href="/karnataka-class-11-science/172">Class 11-Science</a>
-                                                <a href="/karnataka-class-11-commerce/101">Class 11-Commerce</a>
-                                                <a href="/karnataka-class-12-science/173">Class 12-Science</a>
-                                                <a href="/karnataka-class-12-commerce/102">Class 12-Commerce</a>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li class="has-sub">
-                                        <a href="/kerala" class="dropBtn2">
-                                            Kerala
-                                        </a>
-                                        <span class="plus-minus-toggle collapsed"></span>
-                                        <div class="board-menu">
-                                            <!-- class lists  -->
-                                            <span class="first-half">
-                                                <a href="/junior/grade-1">Class 1</a>
-                                                <a href="/junior/grade-2">Class 2</a>
-                                                <a href="/junior/grade-3">Class 3</a>
-                                                <a href="/junior/grade-4">Class 4</a>
-                                                <a href="/junior/grade-5">Class 5</a>
-                                                <a href="kerala-class-6/103">Class 6</a>
-                                                <a href="kerala-class-7/104">Class 7</a>
-                                                <a href="kerala-class-8/105">Class 8</a>
-                                                <a href="kerala-class-9/106">Class 9</a>
-                                                <a href="kerala-class-10/107">Class 10</a>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="/ncert-solutions">
-                                            NCERT Solutions
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/testprep">
-                                            Entrance Exams
+                                            Board
                                         </a>
                                     </li>
                                 </ul>
@@ -212,7 +76,7 @@
                             <li class="nav-item hidden">
                                 <a href="javascript:void(0)" class="login-btn mnLoginPopup" onclick="trackGaEvent('Homepage_New1','Login_Header','Login');">login</a>
                             </li>
-                           
+
                         </ul>
                     </div>
                 </nav>
@@ -250,7 +114,7 @@
                             24X7 doubt resolution with experts via chat
                         </li>
                     </ul>
-                        <div class="app-logo">
+                    <div class="app-logo">
                         <h4>India's best learning app</h4>
                         <div class="app-icons">
                             <a href="https://play.google.com/store/apps/details?id=com.meritnation.school" class="" target="_blank" onclick="trackGaEvent('Homepage_New1','App','Android');">
@@ -260,14 +124,14 @@
                     </div>
                 </div>
                 <div class="main-banner">
-                   <picture>
+                    <picture>
                         <source media="(min-width: 1920px)" srcset="https://tchsu.in/uploads/banner/banner5.jpg">
                         <source media="(min-width: 1600px)" srcset="https://tchsu.in/uploads/banner/banner4.jpg">
                         <source media="(min-width: 768px)" srcset="https://tchsu.in/uploads/banner/banner1.jpg">
                         <source media="(min-width: 320px)" srcset="https://tchsu.in/uploads/banner/banner3.jpg">
                         <img class="to_fade_up fade_up" alt="tchsu" src="https://tchsu.in/uploads/banner/banner2.jpg">
                     </picture>
-                   
+
                 </div>
             </div>
         </div>
@@ -326,9 +190,9 @@
                             complete learning experience. You have the option to choose a schedule that
                             suits you the most
                         </div>
-                       <img class="image" src="https://tchsu.in/uploads/home_images/home_img1.jpg" alt="">
+                        <img class="image" src="https://tchsu.in/uploads/home_images/home_img1.jpg" alt="">
 
-                      
+
                     </div>
                     <div class="right-block">
                         <!-- live class lists  -->
@@ -368,7 +232,7 @@
                         <!-- live class list end  -->
 
 
-                      
+
 
                         <!-- teacher connect app  -->
                         <div class="teacher-connect-app to_fade_up fade_up">
@@ -390,13 +254,15 @@
             <div class="row">
                 <!-- section title  -->
                 <div class="section-title">
-                    <div class="sub-heading"><h2>Why Tch-Su</h2></div>
+                    <div class="sub-heading">
+                        <h2>Why Tch-Su</h2>
+                    </div>
                 </div>
                 <!-- section title end  -->
                 <div class="tutions-five-block">
                     <div class="card-box to_fade_up fade_up">
                         <div class="inner">
-                           <img class="img_radius" src="https://tchsu.in/uploads/home_images/image5.jpg" alt="">
+                            <img class="img_radius" src="https://tchsu.in/uploads/home_images/image5.jpg" alt="">
                             <p>School Jaisi Feeling</p>
                         </div>
                     </div>
@@ -414,7 +280,7 @@
                     </div>
                     <div class="card-box to_fade_up fade_up">
                         <div class="inner">
-                           <img class="img_radius" src="https://tchsu.in/uploads/home_images/image8.jpg" alt="">
+                            <img class="img_radius" src="https://tchsu.in/uploads/home_images/image8.jpg" alt="">
                             <p>Best Quality Recorded Videos using interesting PowerPoint presentations. Flowcharts, tables and diagrams are used in videos for better understanding</p>
                         </div>
                     </div>
@@ -438,7 +304,7 @@
                     <div class="heading">TCH-SU Resource centre</div>
                     <p>Learn at your pace and as per your convenience. Our scientifically designed
                         learning resources are geared to help you pack more punch into your study
-                         time</p>
+                        time</p>
                 </div>
                 <!-- section title end  -->
 
@@ -477,11 +343,11 @@
                             </ul>
                         </div>
                         <!--<img src="https://img-nm.mnimgs.com/img/site_content/meritnation/newHome/homepage/study-resource-2.png?v=1" alt="">-->
-                                                <img class="img_radius" src="https://tchsu.in/uploads/home_images/homepage2.png" alt="">
+                        <img class="img_radius" src="https://tchsu.in/uploads/home_images/homepage2.png" alt="">
                     </div>
                     <div class="block-item to_fade_up fade_up">
                         <!---<img src="https://img-nm.mnimgs.com/img/site_content/meritnation/newHome/homepage/doubt-resolutions.png?v=1" alt="">-->
-                                                <img class="img_radius" src="https://tchsu.in/uploads/home_images/homepage3.jpg" alt="">
+                        <img class="img_radius" src="https://tchsu.in/uploads/home_images/homepage3.jpg" alt="">
                         <div class="points-area">
                             <div class="block-heading">Doubts Clearing Session</div>
                             <ul>
@@ -501,14 +367,14 @@
 
 
                 <!-- counter register know more  -->
-              
+
                 <!-- counter register know more end -->
             </div>
         </div>
     </section>
 
     <!-- our result section  -->
-  
+
     <!-- download app  -->
     <section class="download-app-section">
         <div class="wrapper">
@@ -545,10 +411,10 @@
     <!-- end download app  -->
     <!-- header new  -->
     <!-- footer  -->
-   <?php $this->load->view('front/layout/footer.php') ?>
-    
-    
-    
+    <?php $this->load->view('front/layout/footer.php') ?>
+
+
+
     <link rel="stylesheet" href="https://css-nm.mnimgs.com/css/homepagenew/homePageCombinedCss.min.css?version=1507042021">
     <script src="https://js-nm.mnimgs.com/js/homepagenew/homePageCombinedJs.min.js?version=1507072021"></script>
     <script src="/js/callMe.js?version=1507072021" async=""></script>
@@ -585,27 +451,26 @@
             </div>
         </div>
     </div>
-   
+
 
     <script>
-
         // scroll effects
         var root = document.getElementsByTagName('html')[0];
         root.setAttribute('class', 'scroll-effects');
 
-        $(".to_fade_up").waypoint(function () {
+        $(".to_fade_up").waypoint(function() {
             $(this[0, 'element']).addClass("fade_up");
         }, {
             triggerOnce: true,
             offset: '75%'
         });
-        $(".to_fade_from_left").waypoint(function () {
+        $(".to_fade_from_left").waypoint(function() {
             $(this[0, 'element']).addClass("fade_from_left");
         }, {
             triggerOnce: true,
             offset: '75%'
         });
-        $(".to_fade_from_right").waypoint(function () {
+        $(".to_fade_from_right").waypoint(function() {
             $(this[0, 'element']).addClass("fade_from_right");
         }, {
             triggerOnce: true,
@@ -618,7 +483,8 @@
 
 
 
- 
+
     </div>
 </body>
+
 </html>
